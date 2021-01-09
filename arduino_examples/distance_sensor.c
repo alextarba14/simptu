@@ -6,8 +6,8 @@
 // Tested on 17 September 2019
 // ---------------------------------------------------------------- //
 
-#define echoPin 6 // attach pin D2 Arduino to pin Echo of HC-SR04
-#define trigPin 10 //attach pin D3 Arduino to pin Trig of HC-SR04
+#define echoPin 6 // attach pin D6 Arduino to pin Echo of HC-SR04
+#define trigPin 10 //attach pin D10 Arduino to pin Trig of HC-SR04
 
 // defines variables
 long duration; // variable for the duration of sound wave travel
@@ -17,8 +17,6 @@ void setup() {
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an OUTPUT
   pinMode(echoPin, INPUT); // Sets the echoPin as an INPUT
   Serial.begin(9600); // // Serial Communication is starting with 9600 of baudrate speed
-  Serial.println("Ultrasonic Sensor HC-SR04 Test"); // print some text in Serial Monitor
-  Serial.println("with Arduino UNO R3");
 }
 void loop() {
   // Clears the trigPin condition
