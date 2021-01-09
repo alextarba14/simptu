@@ -100,6 +100,8 @@ void turnOnLCD(){
 
 void turnOffLCD(){
   digitalWrite(LCD_ONOFF,LOW);  
+  // clearing LCD when turning off
+  lcd.clear();
   lcd_on = false;
 }
 
@@ -125,6 +127,3 @@ String removeLastCharacterFromString(String message){
   message.remove(message.length()-1);
   return message;
 }
-
-
-
