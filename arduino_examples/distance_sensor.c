@@ -6,7 +6,7 @@
 // Tested on 17 September 2019
 // ---------------------------------------------------------------- //
 
-#define echoPin 6 // attach pin D6 Arduino to pin Echo of HC-SR04
+#define echoPin 11 // attach pin D11 Arduino to pin Echo of HC-SR04
 #define trigPin 10 //attach pin D10 Arduino to pin Trig of HC-SR04
 
 // defines variables
