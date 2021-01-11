@@ -71,7 +71,7 @@ void loop(){
 
     // Filtering interval and reading and displaying temperature
     // only when ultrasonic sensor detected something in front
-    if(distance > 0 && distance < 200) {     
+    if(distance > 2 && distance < 200) {     
     // turning on lcd only when it's off
     if(!lcd_on){
 		turnOnLCD();
@@ -119,7 +119,7 @@ void printSecondLine(){
   // Setting cursor on the second line
   lcd.setCursor(0,1);
   String message = String("Dist: ");
-  message = message + distance + "cm    ";
+  message = message + distance + "cm";
   lcd.print(message); 
 }
 
