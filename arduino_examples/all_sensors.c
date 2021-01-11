@@ -74,21 +74,21 @@ void loop(){
     if(distance > 0 && distance < 200) {     
     // turning on lcd only when it's off
     if(!lcd_on){
-    turnOnLCD();
+		turnOnLCD();
     }
-      //Read data and store it to variables humidity and temperature
-      humidity = dht.readHumidity();
-      temperature = dht.readTemperature();
+		//Read data and store it to variables humidity and temperature
+		humidity = dht.readHumidity();
+		temperature = dht.readTemperature();
     
-    printFirstLine();
-    printSecondLine();
+		printFirstLine();
+		printSecondLine();
     } else {
-    // increasing number of seconds delayed after no presence was detected
-    if(lcd_on_delay < 3){
-      lcd_on_delay ++;
-    } else{
-      turnOffLCD();
-    }
+		// increasing number of seconds delayed after no presence was detected
+		if(lcd_on_delay < 3){
+			lcd_on_delay ++;
+		} else{
+			turnOffLCD();
+		}
   }
 }
 void turnOnLCD(){
@@ -119,7 +119,7 @@ void printSecondLine(){
   // Setting cursor on the second line
   lcd.setCursor(0,1);
   String message = String("Dist: ");
-  message = message + distance + "cm";
+  message = message + distance + "cm    ";
   lcd.print(message); 
 }
 
