@@ -5,8 +5,8 @@
 //Constants
 #define DHTPIN 12     // attach pin D12 Arduino to out pin of DHT22
 #define DHTTYPE DHT22   // DHT 22 (AM2302)
-#define echoPin 11 // attach pin D11 Arduino to pin Echo of HC-SR04
-#define trigPin 10 //attach pin D10 Arduino to pin Trig of HC-SR04
+#define echoPin 3 // attach pin D11 Arduino to pin Echo of HC-SR04
+#define trigPin 2 //attach pin D10 Arduino to pin Trig of HC-SR04
 
 // LCD 
 #define LCD_RS 9 // attach pin D9 Arduino to LCD RS
@@ -15,7 +15,7 @@
 #define LCD_D6 5 // attach pin D5 Arduino to LCD D6
 #define LCD_D5 6 // attach pin D6 Arduino to LCD D5
 #define LCD_D4 7 // attach pin D7 Arduino to LCD D4
-#define LCD_ONOFF 3 // attach pin D3 Arduino to LCD A (15th pin)
+#define LCD_ONOFF 11 // attach pin D3 Arduino to LCD A (15th pin)
 
 LiquidCrystal lcd(LCD_RS, LCD_EN, LCD_D4, LCD_D5, LCD_D6, LCD_D7);
 DHT dht(DHTPIN, DHTTYPE); //// Initialize DHT sensor for normal 16mhz Arduino
@@ -74,21 +74,21 @@ void loop(){
     if(distance > 2 && distance < 200) {     
     // turning on lcd only when it's off
     if(!lcd_on){
-		turnOnLCD();
+    turnOnLCD();
     }
-		//Read data and store it to variables humidity and temperature
-		humidity = dht.readHumidity();
-		temperature = dht.readTemperature();
+    //Read data and store it to variables humidity and temperature
+    humidity = dht.readHumidity();
+    temperature = dht.readTemperature();
     
-		printFirstLine();
-		printSecondLine();
+    printFirstLine();
+    printSecondLine();
     } else {
-		// increasing number of seconds delayed after no presence was detected
-		if(lcd_on_delay < 3){
-			lcd_on_delay ++;
-		} else{
-			turnOffLCD();
-		}
+    // increasing number of seconds delayed after no presence was detected
+    if(lcd_on_delay < 3){
+      lcd_on_delay ++;
+    } else{
+      turnOffLCD();
+    }
   }
 }
 void turnOnLCD(){
