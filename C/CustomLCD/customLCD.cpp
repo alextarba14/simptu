@@ -6,19 +6,20 @@ void set_pins(){
   DDRD |=   (1<<lcd_D7_ArdPin) |
       		(1<<lcd_D6_ArdPin) |
       		(1<<lcd_D5_ArdPin) |
-     		(1<<lcd_D4_ArdPin) |
-    		(1<<LCD_ON_OFF);
+     		(1<<lcd_D4_ArdPin);
+
   
-  DDRB |=	(1<<lcd_E_ArdPin) |
-    		(1<<lcd_RS_ArdPin);	
+  DDRB |=	(1<<lcd_E_ArdPin)  |
+    		(1<<lcd_RS_ArdPin) |
+			(1<<LCD_ON_OFF);
 }
 
 void turnOnLCD(){
-  PORTD |= (1<<LCD_ON_OFF);
+  PORTB |= (1<<LCD_ON_OFF);
 }
 
 void turnOffLCD(){
-  PORTD = (PORTD & (~(1<<LCD_ON_OFF)));
+  PORTB = (PORTB & (~(1<<LCD_ON_OFF)));
 }
 
 // Executes a set of commands in order to setup LCD, see LCD 1602 datasheet for more
@@ -52,10 +53,6 @@ void lcd_init(void)
 
     lcd_write_instruction(lcd_DisplayOn);         
     _delay_us(80);   
-  
-  // keep the lcd alive for 10 seconds
-  // then turn off
-  turnOnLCD();
 }
 
 // Takes a string as input and writes characters to LCD one by one

@@ -11,7 +11,7 @@
 #define   lcd_D5_ArdPin  PORTD6
 #define   lcd_D4_ArdPin  PORTD7   
 // pin used to command display ON_OFF
-#define   LCD_ON_OFF     PORTD3
+#define   LCD_ON_OFF     PORTB3
 #define  lcd_E_ArdPin    PORTB0                
 #define  lcd_RS_ArdPin   PORTB1                 
 
