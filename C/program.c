@@ -8,6 +8,7 @@
 
 // Initialize DHT sensor for normal 16mhz Arduino
 DHT dht(DHTPIN, DHTTYPE);
+
 // defines variables for DHT22
 float humidity;  //Stores humidity value
 float temperature; //Stores temperature value
@@ -22,6 +23,10 @@ void setup(){
   set_pins();
   setupLcd();
   
+  // Init DHT22
+  dht.begin();
+  
+  // Init HC-SR04  
   init_ultrasonic();
 }
 
