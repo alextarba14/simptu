@@ -20,7 +20,7 @@
 LiquidCrystal lcd(LCD_RS, LCD_EN, LCD_D4, LCD_D5, LCD_D6, LCD_D7);
 DHT dht(DHTPIN, DHTTYPE); //// Initialize DHT sensor for normal 16mhz Arduino
 
-// keep the LCD enabled 5 seconds after 
+// keep the LCD enabled 2 seconds after 
 // nothing was detected in front of HC-SR04
 int lcd_on_delay = 0;
 int lcd_on = false;
@@ -51,8 +51,8 @@ void setup()
 }
 
 void loop(){   
-    //Delay 1 second
-    delay(1000); 
+    // Delay half a second
+    delay(500); 
 
     // Clears the trigPin condition
     digitalWrite(trigPin, LOW);
@@ -72,23 +72,23 @@ void loop(){
     // Filtering interval and reading and displaying temperature
     // only when ultrasonic sensor detected something in front
     if(distance > 2 && distance < 200) {     
-    // turning on lcd only when it's off
-    if(!lcd_on){
-    turnOnLCD();
-    }
-    //Read data and store it to variables humidity and temperature
-    humidity = dht.readHumidity();
-    temperature = dht.readTemperature();
+      // turning on lcd only when it's off
+      if(!lcd_on){
+        turnOnLCD();
+      }
+      //Read data and store it to variables humidity and temperature
+      humidity = dht.readHumidity();
+      temperature = dht.readTemperature();
     
-    printFirstLine();
-    printSecondLine();
+      printFirstLine();
+      printSecondLine();
     } else {
-    // increasing number of seconds delayed after no presence was detected
-    if(lcd_on_delay < 3){
-      lcd_on_delay ++;
-    } else{
-      turnOffLCD();
-    }
+      // increasing number of seconds delayed after no presence was detected
+      if(lcd_on_delay < 2){
+        lcd_on_delay ++;
+      } else{
+        turnOffLCD();
+      }
   }
 }
 void turnOnLCD(){
